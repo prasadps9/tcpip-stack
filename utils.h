@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  testapp.c
+ *       Filename:  enums.h
  *
- *    Description:  This file represents the Test application to test graph topology creation
+ *    Description:  This file contains the decalaration of all enumerations used in this file
  *
  *        Version:  1.0
- *        Created:  Wednesday 18 September 2019 04:41:41  IST
+ *        Created:  Wednesday 18 September 2019 02:38:12  IST
  *       Revision:  1.0
  *       Compiler:  gcc
  *
@@ -29,19 +29,24 @@
  *
  * =====================================================================================
  */
-
 /* Visit my Website for more wonderful assignments and projects :
  * https://csepracticals.wixsite.com/csepracticals
  * if above URL dont work, then try visit : https://csepracticals.com*/
 
-#include "graph.h"
+#ifndef __UTILS__
+#define __UTILS__
 
-extern graph_t *build_first_topo();
+typedef enum{
 
-int 
-main(int argc, char **argv){
+  FALSE,
+  TRUE 
+} bool_t;
 
-    graph_t *topo = build_first_topo();
-    dump_nw_graph(topo);
-    return 0;
-}
+
+#define IS_BIT_SET(n, pos)      ((n & (1 << (pos))) != 0)
+#define TOGGLE_BIT(n, pos)      (n = n ^ (1 << (pos)))
+#define COMPLEMENT(num)         (num = num ^ 0xFFFFFFFF)
+#define UNSET_BIT(n, pos)       (n = n & ((1 << pos) ^ 0xFFFFFFFF))
+#define SET_BIT(n, pos)     (n = n | 1 << pos)
+
+#endif /* __UTILS__ */
